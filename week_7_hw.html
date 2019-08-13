@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Train Scheduler 5000!</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Firebase References -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1 class="text-center">
+                <p>Any time is train time!</p>
+                <p>Choo-Choo Chee-Chee!</p>
+            </h1>
+        </div>
+
+        <!-- Wells for displaying trains -->
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Current Train Schedule
+                </div>
+                <div class="card-body">
+                    <div id="full-train-list">
+                        <table id="train-schedule-table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Sign-Up Card-->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                Add Train
+            </div>
+
+            <div class="card-body">
+
+                <!-- Add Train Form -->
+                <form role="form">
+                    <div class="form-group row">
+                        <label for="name-input">Train:</label>
+                        <input class="form-control" id="train-name-input" type="text">
+                    </div>
+                    <div class="form-group row">
+                        <label for="email-input">Destination:</label>
+                        <input class="form-control" id="destination-input" type="email">
+                    </div>
+                    <div class="form-group row">
+                        <label for="age-input">First Train Time:</label>
+                        <input class="form-control" id="first-train-input" type="number">
+                    </div>
+                    <div class="form-group row">
+                        <label for="comment-input">Frequency (in minutes):</label>
+                        <textarea class="form-control" id="frequency-input" rows="5"></textarea>
+                    </div>
+                    <button class="btn btn-default" id="add-train-btn" type="submit">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="../weekly_HW/week_7_hw.js"></script>
+</body>
+
+</html>
