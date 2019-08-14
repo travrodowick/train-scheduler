@@ -30,7 +30,7 @@
         <div class="jumbotron">
             <h1 class="text-center">
                 <p>Any time is train time!</p>
-                <p>Choo-Choo Chee-Chee!</p>
+                <p>Welcome to the Train Scheduler 5000!</p>
             </h1>
         </div>
 
@@ -42,7 +42,9 @@
                 </div>
                 <div class="card-body">
                     <div id="full-train-list">
-                        <table id="train-schedule-table"></table>
+                        <table>
+                            <tbody id="train-schedule-table"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -63,19 +65,19 @@
                 <!-- Add Train Form -->
                 <form role="form">
                     <div class="form-group row">
-                        <label for="name-input">Train:</label>
+                        <label for="train-name-input">Train:</label>
                         <input class="form-control" id="train-name-input" type="text">
                     </div>
                     <div class="form-group row">
-                        <label for="email-input">Destination:</label>
+                        <label for="destination-input">Destination:</label>
                         <input class="form-control" id="destination-input" type="email">
                     </div>
                     <div class="form-group row">
-                        <label for="age-input">First Train Time:</label>
+                        <label for="train-start-input">First Train Time:</label>
                         <input class="form-control" id="first-train-input" type="number">
                     </div>
                     <div class="form-group row">
-                        <label for="comment-input">Frequency (in minutes):</label>
+                        <label for="frequency-input">Frequency (in minutes):</label>
                         <textarea class="form-control" id="frequency-input" rows="5"></textarea>
                     </div>
                     <button class="btn btn-default" id="add-train-btn" type="submit">Submit</button>
