@@ -20,8 +20,10 @@ $("#add-train-btn").on("click", function (event) {
     // Grabs user input
     var trainName = $("#train-name-input").val().trim();
     var trainDest = $("#destination-input").val().trim();
-    var trainStart = moment($("#first-train-input").val().trim(), "MM/DD/YYYY").format("X");
+    var trainStart = $("#first-train-input").val().trim();
     var trainRate = $("#frequency-input").val().trim();
+
+    console.log('*****', trainStart)
 
     // Creates local "temporary" object for holding train data
     var newTrain = {
@@ -52,29 +54,49 @@ database.ref().on("child_added", function (childSnapshot) {
     var trainStart = childSnapshot.val().startTime;
     var trainRate = childSnapshot.val().frequency;
 
-    // Train Info
-    console.log(trainName);
-    console.log(trainDest);
-    console.log(trainStart);
-    console.log(trainRate);
+    // train Info
+    console.log('trainName = ', trainName);
+    console.log('trainDest = ', trainDest);
+    console.log('trainStart = ', trainStart);
+    console.log('trainRate = ', trainRate);
 
-    // Prettify the train start
-    // var trainStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+    // var maxMoment = moment.max(moment(), trainStart)
 
-    // Calculate the months worked using hardcore math
-    // To calculate the months worked
-    // var empMonths = moment().diff(moment(empStart, "X"), "months");
-    // console.log(empMonths);
+    function toBeNamed() {
+        if (trainStart < moment()) {
+            var futureTrain = trainStart - moment()
+        }
+        console.log('futureTrain = ', futureTrain)
+    }
 
+
+
+    //format first train time
+    var trainTime = trainStart;
+
+    // moment.unix(trainStart).format("hh:mm");
+
+    //calculate difference between times
+    var difference = moment().diff(moment(trainTime), "minutes");
+
+    console.log('diff', difference)
+
+    //time apart
+    var trainRemain = difference % trainRate;
+
+    //minutes away 
+    var minAway = trainRate - trainRemain;
+
+    //next arrival time
+    var nextArrival = moment().add(minAway, "minutes").format('hh:mm');
 
     // Create the new row
     var newRow = $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(trainDest),
-        // $("<td>").text(trainStartPretty),
-        // $("<td>").text(empMonths),
         $("<td>").text(trainRate),
-        // $("<td>").text(empBilled)
+        $("<td>").text(nextArrival),
+        $("<td>").text(minAway)
     );
 
     // Append the new row to the table
